@@ -108,14 +108,14 @@ namespace findMinMax
 
         private static bool compare(double EPS, List<double> doubleList, int indexFirstNumber, int indexSecondNumber)
         {
-            if (Math.Abs(doubleList[indexFirstNumber] - doubleList[indexSecondNumber]) < EPS)
+            if (doubleList[indexFirstNumber] > doubleList[indexSecondNumber])
             {
-                Console.WriteLine("TRUE {0} - {1} < EPS", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                Console.WriteLine("TRUE  {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return true;
             }
             else
             {
-                Console.WriteLine("FALSE {0} - {1} < EPS", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                Console.WriteLine("FALSE {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return false;
             }
         }
