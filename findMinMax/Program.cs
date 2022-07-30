@@ -51,13 +51,72 @@ namespace findMinMax
 
                 #endregion
 
+                #region logical and + compare
 
+                double maxNumber;
+                int numberPlace;
+
+                if (compare(EPS, doubleList, 0, 1) & compare(EPS, doubleList, 0, 2) & compare(EPS, doubleList, 0, 3) & compare(EPS, doubleList, 0, 4))
+                {
+                    Console.WriteLine();
+                    maxNumber = doubleList[0];
+                    numberPlace = 1;
+                }
+                else
+                {
+                    if (compare(EPS, doubleList, 1, 2) & compare(EPS, doubleList, 1, 3) & compare(EPS, doubleList, 1, 4))
+                    {
+                        maxNumber = doubleList[1];
+                        numberPlace = 2;
+                    }
+
+                    else
+                    {
+                        if (compare(EPS, doubleList, 2, 3) & compare(EPS, doubleList, 2, 4))
+                        {
+                            maxNumber = doubleList[2];
+                            numberPlace = 3;
+                        }
+                        else
+                        {
+                            if (compare(EPS, doubleList, 3, 4))
+                            {
+                                maxNumber = doubleList[3];
+                                numberPlace = 4;
+                            }
+                            else
+                            {
+                                maxNumber = doubleList[4];
+                                numberPlace = 5;
+                            }
+                        }
+
+                    }
+
+                }
+
+                Console.WriteLine("Max number is {0} \n Place: {1}", maxNumber, numberPlace);
+                #endregion
 
 
 
 
 
                 endDialog();
+            }
+        }
+
+        private static bool compare(double EPS, List<double> doubleList, int indexFirstNumber, int indexSecondNumber)
+        {
+            if (Math.Abs(doubleList[indexFirstNumber] - doubleList[indexSecondNumber]) < EPS)
+            {
+                Console.WriteLine("TRUE {0} - {1} < EPS", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("FALSE {0} - {1} < EPS", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                return false;
             }
         }
 
