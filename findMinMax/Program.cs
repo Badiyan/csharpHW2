@@ -41,21 +41,24 @@ namespace findMinMax
                 }
 
                 #region array min max
-
-                // FirstVariantUseArray(doubleList);
+                Console.WriteLine("\n First varaint - arrays: \n");
+                FirstVariantUseArray(doubleList);
 
                 #endregion
 
                 #region logical and + compare
-                // SecondVarianIfElse(doubleList);
+                Console.WriteLine("\n Second varaint - if else  // one with all other: \n");
+                SecondVarianIfElse(doubleList);
                 #endregion
 
                 #region pair min max with a lot variables
-                //               PairCompair(doubleList);
+                Console.WriteLine("\n third varaint - if else extra variables \n");
+                PairCompair(doubleList);
                 #endregion
 
                 #region pair min max without extra vars 
-                // PairCompair2(doubleList);
+                Console.WriteLine("\n 4 varaint - if else compare 2 and 3\n");
+                PairCompair2(doubleList);
                 #endregion
 
                 endDialog();
@@ -300,12 +303,12 @@ namespace findMinMax
         {
             if (doubleList[indexFirstNumber] > doubleList[indexSecondNumber])
             {
-                Console.WriteLine("TRUE  {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+               // Console.WriteLine("TRUE  {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return true;
             }
             else
             {
-                Console.WriteLine("FALSE {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+               // Console.WriteLine("FALSE {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return false;
             }
         }
@@ -314,12 +317,12 @@ namespace findMinMax
         {
             if (doubleList[indexFirstNumber] < doubleList[indexSecondNumber])
             {
-                Console.WriteLine("TRUE  {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                // Console.WriteLine("TRUE  {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return true;
             }
             else
             {
-                Console.WriteLine("FALSE {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+               // Console.WriteLine("FALSE {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return false;
             }
         }
