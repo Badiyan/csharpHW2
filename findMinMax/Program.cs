@@ -51,10 +51,12 @@ namespace findMinMax
                 #endregion
 
                 #region pair min max with a lot variables
- //               PairCompair(doubleList);
+                //               PairCompair(doubleList);
                 #endregion
 
-
+                #region pair min max without extra vars 
+                // PairCompair2(doubleList);
+                #endregion
 
                 endDialog();
             }
@@ -118,6 +120,69 @@ namespace findMinMax
             if (number5 < min)
             {
                 min = number5;
+            }
+
+            int minNumberIndex = doubleList.IndexOf(min) + 1;
+            int maxNumberIndex = doubleList.IndexOf(max) + 1;
+
+            Console.WriteLine("Max number is {0} on place {1} \n Min number is {2} on place {3}", max, maxNumberIndex, min, minNumberIndex);
+        }
+
+        private static void PairCompair2(List<double> doubleList)
+        {
+            double number1, number2, number3, number4, number5, max, min;
+            number1 = doubleList[0];
+            number2 = doubleList[1];
+            number3 = doubleList[2];
+            number4 = doubleList[3];
+            number5 = doubleList[4];
+            
+
+            if (number1 > number2)
+            {
+                max = number1;
+                min = number2;
+            }
+            else
+            {
+                max = number2;
+                min = number1;
+            }
+
+            if (number3 > max)
+            {
+                max = number3;
+            }
+            else
+            {
+                if (number3 < min)
+                {
+                    min = number3;
+                }
+            }
+
+            if (number4 > max)
+            {
+                max = number4;
+            }
+            else
+            {
+                if (number4 < min)
+                {
+                    min = number4;
+                }
+            }
+
+            if (number5 > max)
+            {
+                max = number5;
+            }
+            else
+            {
+                if (number5 < min)
+                {
+                    min = number5;
+                }
             }
 
             int minNumberIndex = doubleList.IndexOf(min) + 1;
