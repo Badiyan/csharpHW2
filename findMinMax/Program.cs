@@ -10,7 +10,7 @@ namespace findMinMax
     {
         static void Main(string[] args)
         {
-            const double EPS = 0.0001;
+//            const double EPS = 0.0001;
 
             #region taskText
             /* task
@@ -42,63 +42,17 @@ namespace findMinMax
 
                 #region array min max
 
-                //double maxValue = doubleList.Max();
-                //int maxindex = doubleList.IndexOf(maxValue);
-                //double minValue = doubleList.Min();
-                //int minIndex = doubleList.IndexOf(minValue);
-
-                //Console.WriteLine("Max is number on place {0}: {1}, \n Min in place {2} number: {3}", maxindex+1, maxValue, minIndex+1, minValue );
+                // FirstVariantUseArray(doubleList);
 
                 #endregion
 
                 #region logical and + compare
-
-                double maxNumber;
-                int numberPlace;
-
-                if (compare(EPS, doubleList, 0, 1) & compare(EPS, doubleList, 0, 2) & compare(EPS, doubleList, 0, 3) & compare(EPS, doubleList, 0, 4))
-                {
-                    Console.WriteLine();
-                    maxNumber = doubleList[0];
-                    numberPlace = 1;
-                }
-                else
-                {
-                    if (compare(EPS, doubleList, 1, 2) & compare(EPS, doubleList, 1, 3) & compare(EPS, doubleList, 1, 4))
-                    {
-                        maxNumber = doubleList[1];
-                        numberPlace = 2;
-                    }
-
-                    else
-                    {
-                        if (compare(EPS, doubleList, 2, 3) & compare(EPS, doubleList, 2, 4))
-                        {
-                            maxNumber = doubleList[2];
-                            numberPlace = 3;
-                        }
-                        else
-                        {
-                            if (compare(EPS, doubleList, 3, 4))
-                            {
-                                maxNumber = doubleList[3];
-                                numberPlace = 4;
-                            }
-                            else
-                            {
-                                maxNumber = doubleList[4];
-                                numberPlace = 5;
-                            }
-                        }
-
-                    }
-
-                }
-
-                Console.WriteLine("Max number is {0} \n Place: {1}", maxNumber, numberPlace);
+                // SecondVarianIfElse(doubleList);
                 #endregion
 
-
+                #region pair min max with a lot variables
+ //               PairCompair(doubleList);
+                #endregion
 
 
 
@@ -106,7 +60,178 @@ namespace findMinMax
             }
         }
 
-        private static bool compare(double EPS, List<double> doubleList, int indexFirstNumber, int indexSecondNumber)
+        private static void PairCompair(List<double> doubleList)
+        {
+            double number1, number2, number3, number4, number5, firstPairMax, secondPairMax, firstPairMin, secondPairMin, max, min;
+            number1 = doubleList[0];
+            number2 = doubleList[1];
+            number3 = doubleList[2];
+            number4 = doubleList[3];
+            number5 = doubleList[4];
+
+            if (number1 > number2)
+            {
+                firstPairMax = number1;
+                firstPairMin = number2;
+            }
+            else
+            {
+                firstPairMax = number2;
+                firstPairMin = number1;
+            }
+
+            if (number3 > number4)
+            {
+                secondPairMax = number3;
+                secondPairMin = number4;
+            }
+            else
+            {
+                secondPairMax = number4;
+                secondPairMin = number3;
+            }
+
+
+            if (firstPairMax > secondPairMax)
+            {
+                max = firstPairMax;
+            }
+            else
+            {
+                max = secondPairMax;
+            }
+
+            if (firstPairMin < secondPairMin)
+            {
+                min = firstPairMin;
+            }
+            else
+            {
+                min = secondPairMin;
+            }
+
+            if (number5 > max)
+            {
+                max = number5;
+            }
+
+            if (number5 < min)
+            {
+                min = number5;
+            }
+
+            int minNumberIndex = doubleList.IndexOf(min) + 1;
+            int maxNumberIndex = doubleList.IndexOf(max) + 1;
+
+            Console.WriteLine("Max number is {0} on place {1} \n Min number is {2} on place {3}", max, maxNumberIndex, min, minNumberIndex);
+        }
+
+        private static void SecondVarianIfElse(List<double> doubleList)
+        {
+            double maxNumber;
+            int maxNumberPlace;
+
+            if (IsFirstNumberBigger(doubleList, 0, 1) & IsFirstNumberBigger(doubleList, 0, 2) & IsFirstNumberBigger(doubleList, 0, 3) & IsFirstNumberBigger(doubleList, 0, 4))
+            {
+                maxNumber = doubleList[0];
+                maxNumberPlace = 1;
+
+            }
+            else
+            {
+                if (IsFirstNumberBigger(doubleList, 1, 2) & IsFirstNumberBigger(doubleList, 1, 3) & IsFirstNumberBigger(doubleList, 1, 4))
+                {
+                    maxNumber = doubleList[1];
+                    maxNumberPlace = 2;
+
+                }
+
+                else
+                {
+                    if (IsFirstNumberBigger(doubleList, 2, 3) & IsFirstNumberBigger(doubleList, 2, 4))
+                    {
+                        maxNumber = doubleList[2];
+                        maxNumberPlace = 3;
+
+                    }
+                    else
+                    {
+                        if (IsFirstNumberBigger(doubleList, 3, 4))
+                        {
+                            maxNumber = doubleList[3];
+                            maxNumberPlace = 4;
+                        }
+                        else
+                        {
+                            maxNumber = doubleList[4];
+                            maxNumberPlace = 5;
+                        }
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine("Max number is {0} \n Place: {1}", maxNumber, maxNumberPlace);
+
+            double minNumber;
+            int minNumberPlace;
+
+            if (IsFirstNumberSmaller(doubleList, 0, 1) & IsFirstNumberSmaller(doubleList, 0, 2) & IsFirstNumberSmaller(doubleList, 0, 3) & IsFirstNumberSmaller(doubleList, 0, 4))
+            {
+                minNumber = doubleList[0];
+                minNumberPlace = 1;
+
+            }
+            else
+            {
+                if (IsFirstNumberSmaller(doubleList, 1, 2) & IsFirstNumberSmaller(doubleList, 1, 3) & IsFirstNumberSmaller(doubleList, 1, 4))
+                {
+                    minNumber = doubleList[1];
+                    minNumberPlace = 2;
+
+                }
+
+                else
+                {
+                    if (IsFirstNumberSmaller(doubleList, 2, 3) & IsFirstNumberSmaller(doubleList, 2, 4))
+                    {
+                        minNumber = doubleList[2];
+                        minNumberPlace = 3;
+
+                    }
+                    else
+                    {
+                        if (IsFirstNumberSmaller(doubleList, 3, 4))
+                        {
+                            minNumber = doubleList[3];
+                            minNumberPlace = 4;
+                        }
+                        else
+                        {
+                            minNumber = doubleList[4];
+                            minNumberPlace = 5;
+                        }
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine("Min number is {0} \n Place: {1}", minNumber, minNumberPlace);
+        }
+
+        private static void FirstVariantUseArray(List<double> doubleList)
+        {
+            double maxValue = doubleList.Max();
+            int maxindex = doubleList.IndexOf(maxValue);
+            double minValue = doubleList.Min();
+            int minIndex = doubleList.IndexOf(minValue);
+
+            Console.WriteLine("Max is number on place {0}: {1}, \n Min in place {2} number: {3}", maxindex + 1, maxValue, minIndex + 1, minValue);
+        }
+
+        private static bool IsFirstNumberBigger( List<double> doubleList, int indexFirstNumber, int indexSecondNumber)
         {
             if (doubleList[indexFirstNumber] > doubleList[indexSecondNumber])
             {
@@ -116,6 +241,20 @@ namespace findMinMax
             else
             {
                 Console.WriteLine("FALSE {0} > {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                return false;
+            }
+        }
+
+        private static bool IsFirstNumberSmaller(List<double> doubleList, int indexFirstNumber, int indexSecondNumber)
+        {
+            if (doubleList[indexFirstNumber] < doubleList[indexSecondNumber])
+            {
+                Console.WriteLine("TRUE  {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("FALSE {0} < {1}", doubleList[indexFirstNumber], doubleList[indexSecondNumber]);
                 return false;
             }
         }
